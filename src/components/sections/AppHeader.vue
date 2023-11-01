@@ -1,7 +1,7 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Program_1</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+      <a class="navbar-brand" href="#">SPA</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -17,18 +17,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
+            <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Users</a>
+            <router-link class="nav-link" to="/users">Users</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Posts</a>
+            <router-link class="nav-link" to="/posts">Posts</router-link>
           </li>
-          
-      
         </ul>
       </div>
     </nav>
