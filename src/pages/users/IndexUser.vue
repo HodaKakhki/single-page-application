@@ -4,7 +4,7 @@
       <div v-if="loading" class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
-      <div v-else class="col-md-4" v-for="user in users" :key="user.id">
+      <div v-else class="col-md-4 mt-5" v-for="user in users" :key="user.id">
         <CardView :user="user" />
       </div>
     </div>
@@ -38,7 +38,7 @@ export default {
         });
     }
     getUsers();
-    return { users };
+    return { users, loading };
   },
 };
 </script>

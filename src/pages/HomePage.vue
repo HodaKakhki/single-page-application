@@ -8,7 +8,10 @@
           eaque ducimus omnis suscipit dicta nam fuga repellendus maxime, alias
           saepe?
         </p>
-        <router-link :to="{ name: 'users' }" class="btn btn-dark">Users</router-link>
+        <router-link :to="{ name: 'users' }" class="btn btn-dark"
+          >Users</router-link
+        >
+        <!-- <router-link :to="{ name: 'posts' }" class="btn btn-light ms-3">Posts</router-link> -->
       </col-md-6>
     </div>
   </div>
