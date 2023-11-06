@@ -8,6 +8,7 @@
           eaque ducimus omnis suscipit dicta nam fuga repellendus maxime, alias
           saepe?
         </p>
+        <router-link :to="{ name: 'users' }" class="btn btn-dark">Users</router-link>
       </col-md-6>
     </div>
   </div>
