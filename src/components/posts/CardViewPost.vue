@@ -1,13 +1,17 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <route-link :to="{ name: 'postId', params: { id: post.id } }">
-        Title:{{ post.title }}
-      </route-link>
+      <router-link :to="{ name: 'postId', params: { id: post.id } }">{{
+        post.title
+      }}</router-link>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Body :{{ post.body }}</li>
     </ul>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-danger me-4">Delete</button>
+      <button class="btn btn-sm btn-dark">Edit</button>
+    </div>
   </div>
 </template>
 

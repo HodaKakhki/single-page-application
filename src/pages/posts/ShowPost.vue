@@ -1,41 +1,36 @@
 <template>
   <div class="container">
     <div class="row g-3">
-      <div>
-        <router-link to="CreatePost" class="btn btn-dark mt-5">
-          New Post
-        </router-link>
-      </div>
       <div v-if="loading" class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
-      <div v-else class="col-md-4 mt-5" v-for="post in posts" :key="post.id">
+      <div v-else class="col-md-4 mt-5">
         <CardViewPost :post="post" />
       </div>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import { ref } from "vue";
-import CardViewPost from "../../components/posts/CardViewPost.vue";
+import { useRoute } from "vue-router";
+import CardViewPost from "@/components/posts/CardViewPost.vue";
 
 export default {
   components: {
     CardViewPost,
   },
   setup() {
-    const posts = ref({});
+    const post = ref({});
     const loading = ref(true);
-
-    function getPosts() {
+    const route = useRoute();
+    function getPost() {
       axios
-        .get("https://jsonplaceholder.typicode.com/posts")
+        .get(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
         .then(function (response) {
           // handle success
-          posts.value = response.data;
+          post.value = response.data;
           loading.value = false;
         })
         .catch(function (error) {
@@ -43,8 +38,8 @@ export default {
           console.log(error);
         });
     }
-    getPosts();
-    return { posts, loading };
+    getPost();
+    return { post, loading, route };
   },
 };
 </script>
