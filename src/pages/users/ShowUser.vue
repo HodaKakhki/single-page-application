@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <div class="row g-3">
-      <div v-if="loading" class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+      <div v-if="loading" class="spinner-border" role="status"></div>
       <div v-else class="col-md-4 mt-5">
         <CardView :user="user" />
       </div>

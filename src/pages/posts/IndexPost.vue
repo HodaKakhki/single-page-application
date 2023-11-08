@@ -2,12 +2,11 @@
   <div class="container">
     <div class="row g-3">
       <div>
-        <router-link to="CreatePost" class="btn btn-dark mt-5">
+        <router-link :to="{ name: 'createPost' }" class="btn btn-dark mt-5">
           New Post
         </router-link>
       </div>
       <div v-if="loading" class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
       </div>
       <div v-else class="col-md-4 mt-5" v-for="post in posts" :key="post.id">
         <CardViewPost :post="post" />
