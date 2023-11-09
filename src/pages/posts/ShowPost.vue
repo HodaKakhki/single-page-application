@@ -1,8 +1,7 @@
 <template>
   <div class="container">
     <div class="row g-3">
-      <div v-if="loading" class="spinner-border" role="status">
-      </div>
+      <div v-if="loading" class="spinner-border" role="status"></div>
       <div v-else class="col-md-4 mt-5">
         <CardViewPost :post="post" />
       </div>
