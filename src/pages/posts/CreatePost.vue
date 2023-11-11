@@ -2,81 +2,49 @@
   <div class="container">
     <div class="col-md-6">
       <h2 class="my-3">Create Post:</h2>
-      <form @submit.prevent="validate">
-        <div class="form-group mb-3">
-          <label class="form-lable">Title:</label>
-          <input type="text" class="form-control" v-model.lazy="form.title" />
-          <div class="form-text text-danger">
-            {{ form.titleErrorText }}
-          </div>
-        </div>
-        <div class="form-group mb-3">
-          <label class="form-lable">Body:</label>
-          <textarea class="form-control" v-model.lazy="form.body"> </textarea>
-          <div class="form-text text-danger">
-            {{ form.bodyErrorText }}
-          </div>
-        </div>
-        <button type="submit" class="btn btn-dark" :disabled="loading">
-          <div class="spinner-border" role="status" v-if="loading"></div>
-          Create Post
-        </button>
-      </form>
+      <FormView @formData="createPost" 
+      
+      :button-loading="loading" 
+      button-text="Create Post"/>
     </div>
   </div>
 </template>
 
 <script>
-import { reactive } from "vue";
 import axios from "axios";
-import { ref } from "vue";
 import Swal from "sweetalert2";
+import { ref } from "vue";
+
+import FormView from "@/components/posts/FormView.vue";
 export default {
+  components: { FormView },
   setup() {
-    const form = reactive({
-      title: "",
-      titleErrorText: "",
-      body: "",
-      bodyErrorText: "",
-    });
     const loading = ref(false);
-    const createPost = () => {
+
+    function createPost(formData) {
+      loading.value = true;
       axios
         .post("https://jsonplaceholder.typicode.com/posts", {
-          title: form.title,
-          body: form.body,
+          title: formData.title,
+          body: formData.bady,
           userId: 1,
         })
         .then(function () {
+          loading.value = false;
+
           Swal.fire({
-            title: "Thanks",
+            title: "Thanks!",
             text: "Post created successfully",
-            icon: "Success",
-            confirmButtonText: "OK",
+            icon: "success",
+            confirmButtonText: "Ok",
           });
-          loading.value = true;
         })
         .catch(function (error) {
           console.log(error);
         });
-    };
-    const validate = () => {
-      if (form.title === "") {
-        form.titleErrorText = "Please enter a title";
-      } else {
-        form.titleErrorText = "";
-      }
-      if (form.body === "") {
-        form.bodyErrorText = "Please enter a body";
-      } else {
-        form.bodyErrorText = "";
-      }
-      if (form.title !== "" && form.body !== "") {
-        createPost();
-        loading.value = true;
-      }
-    };
-    return { form, validate, loading };
+    }
+
+    return { createPost, loading };
   },
 };
 </script>
