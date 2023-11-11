@@ -1,11 +1,15 @@
 <template>
   <div class="container">
     <div class="col-md-6">
+      <router-link :to="{ name: 'home' }" class="btn btn-primary mt-5 mx-2">
+        Back
+      </router-link>
       <h2 class="my-3">Create Post:</h2>
-      <FormView @formData="createPost" 
-      
-      :button-loading="loading" 
-      button-text="Create Post"/>
+      <FormView
+        @formData="createPost"
+        :button-loading="loading"
+        button-text="Create Post"
+      />
     </div>
   </div>
 </template>

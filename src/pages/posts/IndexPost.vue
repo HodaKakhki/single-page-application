@@ -5,9 +5,11 @@
         <router-link :to="{ name: 'createPost' }" class="btn btn-dark mt-5">
           New Post
         </router-link>
+        <router-link :to="{ name: 'home' }" class="btn btn-primary mt-5 mx-2">
+          Back
+        </router-link>
       </div>
-      <div v-if="loading" class="spinner-border" role="status">
-      </div>
+      <div v-if="loading" class="spinner-border" role="status"></div>
       <div v-else class="col-md-4 mt-5" v-for="post in posts" :key="post.id">
         <CardViewPost :post="post" />
       </div>

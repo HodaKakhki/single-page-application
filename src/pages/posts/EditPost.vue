@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+        <router-link :to="{ name: 'home' }" class="btn btn-primary mt-5 mx-2">
+          Back
+        </router-link>
     <div v-if="pageLoading" class="spinner-border" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
